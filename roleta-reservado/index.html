@@ -4,10 +4,10 @@
 <div class="shade" id="shade"><div class="panel"><h2>Administração</h2><div id="login"><label>Senha<input id="password" type="password" value=""></label><button onclick="entrar()">ENTRAR</button><button class="gray" onclick="fecharPainel()">CANCELAR</button><p id="loginError" class="errors"></p></div><div id="settings" class="hidden"><p>Probabilidades por giro (devem somar 100%).</p><label>7 diárias na praia (%)<input id="p0" type="number" min="0" max="100" step="0.1"></label><label>Final de semana na praia (%)<input id="p1" type="number" min="0" max="100" step="0.1"></label><label>Coca-Cola (%)<input id="p2" type="number" min="0" max="100" step="0.1"></label><label>Guaraná (%)<input id="p3" type="number" min="0" max="100" step="0.1"></label><label>Pix de R$ 50 (%)<input id="p4" type="number" min="0" max="100" step="0.1"></label><label>Tente na próxima (%)<input id="p5" type="number" min="0" max="100" step="0.1"></label><p id="counter"></p><label>Alterar senha (opcional)<input type="password" id="newPassword" placeholder="Nova senha"></label><button onclick="salvar()">SALVAR</button><button class="gray" onclick="fecharPainel()">FECHAR</button><button class="gray" onclick="zerar()">ZERAR HISTÓRICO</button><p class="errors" id="settingsError"></p><small>As chances são independentes a cada giro. Histórico e ajustes ficam salvos somente neste dispositivo, quando permitido pelo navegador.</small></div></div></div>
 <script>
 var nomes=["7 diárias na praia","Final de semana na praia","Coca-Cola","Guaraná","Pix de R$ 50","Tente na próxima"];
-var chances=[3,57,2,2,1,35];var senha='1234';var historico=[];var girando=false;var angulo=0;var timer=null;
+var chances=[3,67,2,2,1,25];var senha='1234';var historico=[];var girando=false;var angulo=0;var timer=null;
 function el(id){return document.getElementById(id)}
-try{var saved=JSON.parse(localStorage.getItem('reservado_roleta_simples_v5')||'null');if(saved&&saved.chances&&saved.chances.length===6){chances=saved.chances;senha=saved.senha||senha;historico=saved.historico||[]}}catch(e){}
-function guardar(){try{localStorage.setItem('reservado_roleta_simples_v5',JSON.stringify({chances:chances,senha:senha,historico:historico}))}catch(e){}}
+try{var saved=JSON.parse(localStorage.getItem('reservado_roleta_simples_v6')||'null');if(saved&&saved.chances&&saved.chances.length===6){chances=saved.chances;senha=saved.senha||senha;historico=saved.historico||[]}}catch(e){}
+function guardar(){try{localStorage.setItem('reservado_roleta_simples_v6',JSON.stringify({chances:chances,senha:senha,historico:historico}))}catch(e){}}
 function girar(){
  if(girando||el('result').className.indexOf('open')!==-1)return false;
  var r=Math.random()*100,index=chances.length-1,total=0;
